@@ -193,7 +193,7 @@ function your_author(){
       </div>
       <div class="sidepanel">
         <h2>Meet The Author</h2>
-        <p><?php echo get_avatar($mta_profiles['gravatar'], '125'); ?><p><?php echo $mta_profiles['biography']; ?></p><a href="<?php echo $mta_profiles['readmore']; ?>">Read More &raquo;</a></p>
+        <p><?php echo get_avatar($mta_profiles['gravatar'], '125'); ?><p><?php echo $mta_profiles['biography']; ?></p><?php if ($mta_profiles['readmore']) { ?><a href="<?php echo $mta_profiles['readmore'] ?>">Read More &raquo;</a><?php } ?>
         <br/>
       </div>
     </div>
