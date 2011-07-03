@@ -23,8 +23,6 @@ function MTA_profiles_url( $path = '' ) {
 
 //on actication options will be populated
 
-// @TODO: Sort and write out all social media links.
-
 function activate_mta() {
 
     $mta_profiles_opts1 = get_option('mta_profiles_options');
@@ -140,9 +138,9 @@ $mta_profiles = get_option('mta_profiles_options');
 define("MTA_PROFILES_VER","1.0",false);
 
 // Add The CSS and jQuery to the header.
-wp_register_style('meettheauthor', WP_PLUGIN_URL .'/meettheauthor/mta.css');
-wp_enqueue_style('meettheauthor');
-wp_register_script('thismta', WP_PLUGIN_URL . '/meettheauthor/jquery.min.js', array('jquery') );
+wp_register_style('wp-meettheauthor', WP_PLUGIN_URL .'/wp-meettheauthor/mta.css');
+wp_enqueue_style('wp-meettheauthor');
+wp_register_script('thismta', WP_PLUGIN_URL . '/wp-meettheauthor/jquery.min.js', array('jquery') );
 wp_enqueue_script('thismta');
 
 function your_author(){
@@ -155,9 +153,9 @@ function your_author(){
       <div class="sidepanel">
         <h2>Contact Us</h2>
         <ul>
-	  <li><?php echo $mta_profiles['contact']; ?></li>
-	  <li><?php echo $mta_profiles['address']; ?></li>
-	  <li><?php echo $mta_profiles['city']; ?>, <?php echo $mta_profiles['region']; ?> <?php echo $mta_profiles['zip']; ?></li>
+	  <?php if($mta_profiles['contact']) {?><li><?php echo $mta_profiles['contact']; ?></li><?php } ?>
+	  <?php if($mta_profiles['address']) {?><li><?php echo $mta_profiles['address']; ?></li><?php } ?>
+	  <?php if($mta_profiles['city']) {?><li><?php echo $mta_profiles['city']; ?>, <?php echo $mta_profiles['region']; ?> <?php echo $mta_profiles['zip']; ?></li><?php } ?>
 	  <?php if($mta_profiles['mobile']) { ?><li>Mobile: <?php echo $mta_profiles['mobile']; ?></li><?php } ?>
 	  <?php if($mta_profiles['phone']) { ?><li>Direct: <?php echo $mta_profiles['phone']; ?></li><?php } ?>
 	  <?php if($mta_profiles['fax']) { ?><li>Fax: <?php echo $mta_profiles['fax']; ?></li><?php } ?>
@@ -171,7 +169,7 @@ function your_author(){
 	    global $mta_profiles_networks;
 	    foreach ($mta_profiles_networks as $mta_profiles_network) {
 		$mta_link = str_replace(" ","",$mta_profiles[$mta_profiles_network]); if (!empty($mta_link)) { ?>
-		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL . '/meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
+		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL . '/wp-meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
 		    <?php echo ucwords($mta_profiles_network); ?></a>
 		    </li><?php
 		}
@@ -181,7 +179,7 @@ function your_author(){
 	    global $mta_profiles_networks2;
 	    foreach ($mta_profiles_networks2 as $mta_profiles_network) {
 		$mta_link = str_replace(" ","",$mta_profiles[$mta_profiles_network]); if (!empty($mta_link)) { ?>
-		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL . '/meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
+		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL . '/wp-meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
 		    <?php echo ucwords($mta_profiles_network); ?></a>
 		    </li><?php
 		}
@@ -190,7 +188,7 @@ function your_author(){
         </ul>
         <h2>Subscribe For Updates</h2>
         <ul>
-          <li><img src="<?php echo WP_PLUGIN_URL . "/meettheauthor/images/social/social-rss.png"; ?>" style="margin-bottom: -3px; margin-right: 10px;"/><a href="<?php bloginfo('rss2_url'); ?>" title="Subscribe via RSS" target="_blank">RSS via Feed Reader</a></li>
+          <li><img src="<?php echo WP_PLUGIN_URL . "/wp-meettheauthor/images/social/social-rss.png"; ?>" style="margin-bottom: -3px; margin-right: 10px;"/><a href="<?php bloginfo('rss2_url'); ?>" title="Subscribe via RSS" target="_blank">RSS via Feed Reader</a></li>
         </ul>
       </div>
       <div class="sidepanel">
@@ -242,7 +240,6 @@ jQuery(document).ready(function()
 });
 </script>
 
-// @todo z-index and margin-top options
 <style type="text/css">
 #divFeedityWidget span {
         display:none !important;
