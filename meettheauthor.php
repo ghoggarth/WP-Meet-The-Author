@@ -6,7 +6,7 @@
   Description: This plugin adds a fancy jQuery drop down.
   Author: Syntax_error
   Version: 1.0
-  Author URI: # OMG
+  Author URI: #
  */
 
 function MTA_profiles_url( $path = '' ) {
@@ -73,7 +73,14 @@ function activate_mta() {
 			    'mobile'=>'555-555-5555',
 			    'phone'=>'',
 			    'fax'=>'',
-			    'email'=>'');
+			    'email'=>'',
+			    'top'=>'275',
+			    'align'=>'left',
+			    'size'=>'2',
+			    'theme'=>'2',
+			    'insert'=>'auto',
+			    'follow'=>'dofollow' );
+
     if ($mta_profiles_opts1) {
 
 	$mta_profiles = $mta_profiles_opts1 + $mta_profiles_opts2 + $mta_profiles_opts3;
@@ -164,7 +171,7 @@ function your_author(){
 	    global $mta_profiles_networks;
 	    foreach ($mta_profiles_networks as $mta_profiles_network) {
 		$mta_link = str_replace(" ","",$mta_profiles[$mta_profiles_network]); if (!empty($mta_link)) { ?>
-		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>"><img src="<?php echo WP_PLUGIN_URL . '/meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
+		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL . '/meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
 		    <?php echo ucwords($mta_profiles_network); ?></a>
 		    </li><?php
 		}
@@ -174,7 +181,7 @@ function your_author(){
 	    global $mta_profiles_networks2;
 	    foreach ($mta_profiles_networks2 as $mta_profiles_network) {
 		$mta_link = str_replace(" ","",$mta_profiles[$mta_profiles_network]); if (!empty($mta_link)) { ?>
-		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>"><img src="<?php echo WP_PLUGIN_URL . '/meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
+		    <li><a href="<?php echo $mta_profiles[$mta_profiles_network]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL . '/meettheauthor/images/social/' . $mta_profiles_network . '.png'?>" />
 		    <?php echo ucwords($mta_profiles_network); ?></a>
 		    </li><?php
 		}
@@ -183,14 +190,12 @@ function your_author(){
         </ul>
         <h2>Subscribe For Updates</h2>
         <ul>
-          <li><img src="<?php echo WP_PLUGIN_URL . "/meettheauthor/images/social/social-rss.png"; ?>" style="margin-bottom: -3px; margin-right: 10px;"/><a href="feed/" title="Subscribe via RSS">RSS via Feed Reader</a></li>
-          <li><img src="<?php echo WP_PLUGIN_URL . "/meettheauthor/images/social/feedburner.png"; ?>" style="margin-bottom: -3px; margin-right: 10px;"/><a href="//feedburner.google.com/fb/a/mailverify?uri=TheSueAdlerTeamWebsite&amp;loc=en_US" onclick="window.open('http://feedburner.google.com/fb/a/mailverify?uri=TheSueAdlerTeamWebsite&amp;loc=en_US','popup','width=600,height=600,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false">Subscribe via Email</a></li>
+          <li><img src="<?php echo WP_PLUGIN_URL . "/meettheauthor/images/social/social-rss.png"; ?>" style="margin-bottom: -3px; margin-right: 10px;"/><a href="<?php bloginfo('rss2_url'); ?>" title="Subscribe via RSS" target="_blank">RSS via Feed Reader</a></li>
         </ul>
       </div>
       <div class="sidepanel">
         <h2>Meet The Author</h2>
-        <p><img class="sidepanel" src="http://en.gravatar.com/userimage/22723711/f22ffdef86850656c173be054ad7e2d0.jpg?size=300" width="300" height="300"><strong>Sue Adler has been the #1 Keller Williams agent in NJ for the past six years, and leads one of the top Keller Williams teams worldwide, with annual production of $62 million in 2010.</strong></p>
-        <p>As an "Outlier" who grew up in the Real Estate business, Sue has proven that it's possible to start over in any market and succeed. She was formerly the...<a href="associates/sue-adler/">Read More &raquo;</a></p>
+        <p><?php echo get_avatar($mta_profiles['gravatar'], '125'); ?><p><?php echo $mta_profiles['biography']; ?></p><a href="<?php echo $mta_profiles['readmore']; ?>">Read More &raquo;</a></p>
         <br/>
       </div>
     </div>
@@ -236,6 +241,8 @@ jQuery(document).ready(function()
   });
 });
 </script>
+
+// @todo z-index and margin-top options
 <style type="text/css">
 #divFeedityWidget span {
         display:none !important;
@@ -267,7 +274,7 @@ function mta_profiles_settings_page() {
 
 <div class="wrap">
 
-<h2 style="float:left;">Meet The Author</h2>
+<h2>Meet The Author</h2>
 
 <div style="clear:both;"></div>
 <form  method="post" action="options.php">
@@ -335,8 +342,31 @@ foreach ($mta_profiles_networks2 as $mta_profiles_network) { $count++; ?>
 </div>
 </div>
 
+<h2>Author Information</h2>
+<p>Here you can fill out a short bio, connect your Gravatar and link to your authors page. If you don't have a Gravatar yet, head over to <a href="http://gravatar.com" target="_blank">Gravatar.com</a>, register and upload your avatar.</p>
+
+<h3>Your Current Gravatar</h3>
+<?php echo get_avatar($mta_profiles['gravatar'], '96'); ?>
+
+<table class="form-table">
+    <tr valign="top">
+    <th scope="row"><label for="mta_profiles_options[gravatar]">Gravatar E-mail</label></th>
+    <td><input type="text" size="35" name="mta_profiles_options[gravatar]" class="big-text" value="<?php echo $mta_profiles['gravatar']; ?>" /></td>
+    </tr>
+    <tr valign="top">
+    <th scope="row"><label for="mta_profiles_options[biography]">Biography</label></th>
+    <td><textarea type="text" cols="35" rows="5" name="mta_profiles_options[biography]" class="big-text" value="<?php echo $mta_profiles['biography']; ?>" /><?php echo $mta_profiles['biography']; ?></textarea>
+    </td>
+    </tr>
+    <tr valign="top">
+    <th scope="row"style="width:300px;"><label for="mta_profiles_options[gravatar]">"Read More" Link To Author Page</label></th>
+    <td><input type="text" size="35" name="mta_profiles_options[readmore]" class="big-text" value="<?php echo $mta_profiles['readmore']; ?>" /></td>
+    </tr>
+</table>
+
 <h2>Customize Looks</h2>
 <p>Customize the Profile Links and Icons</p>
+
 <table class="form-table">
 
 <tr valign="top">
