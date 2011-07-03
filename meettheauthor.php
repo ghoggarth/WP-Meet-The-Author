@@ -2,11 +2,12 @@
 
 /*
   Plugin Name: Meet The Author
-  Plugin URI: #
-  Description: This plugin adds a fancy jQuery drop down.
+  Plugin URI: https://github.com/chaos1/WP-Meet-The-Author
+  Description: This is a simple WordPress plugin that places a tab at the top of your blog which slides down to present the user with contact information, social media links, RSS link, Gravatar and a short bio. This is my first public WordPress Plugin, please enjoy!
   Author: Syntax_error
-  Version: 1.0
-  Author URI: #
+  Version: 1.0 trunk
+  License: GPLv2
+  Author URI: http://codesleepshred.com
  */
 
 function MTA_profiles_url( $path = '' ) {
