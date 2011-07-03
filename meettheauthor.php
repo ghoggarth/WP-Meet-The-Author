@@ -8,6 +8,7 @@
   Version: 1.0 trunk
   License: GPLv2
   Author URI: http://codesleepshred.com
+  Other Notes: Credit to Cute Profiles authors Tejaswini Deshpande, Sanjeev Mishra for the dashboard part of this plugin. This is my first publically released plugin and I needed to learn how to code the Dashboard. I typed out each line of code to learn. Thanks guys!
  */
 
 function MTA_profiles_url( $path = '' ) {
@@ -258,6 +259,21 @@ jQuery(document).ready(function()
 }
 
 add_action('admin_head', 'mta_profiles_admin_head');
+
+function mta_head_style() { ?>
+<style type="text/css">
+#top {
+    clear:both;
+    top: <?php if (is_admin_bar_showing() == true) { echo "28px"; } else { echo "0px"; } ?> ;
+    left:50%;
+    margin-left:-490px;
+        z-index: 999999;
+    position:fixed;
+}
+</style>
+<?php }
+
+add_action('wp_head', 'mta_head_style');
 
 // display page in options
 
