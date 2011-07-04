@@ -432,7 +432,6 @@ foreach ($mta_profiles_networks2 as $mta_profiles_network) { $count++; ?>
                             <ul>
                                 <li><a href="http://codesleepshred.com" target="_blank">CodeSleepShred</a></li>
                                 <li><a href="http://codex.wordpress.org/Main_Page" title="WordPress Help" target="_blank">WordPress Codex</a></li>
-                                <li><a href="http://wordpress.org/extend/plugins/cute-profiles/" title="Cute Profiles" target="_blank">Cute Profiles</a></li>
                             </ul>
                         </div>
                     </div>
