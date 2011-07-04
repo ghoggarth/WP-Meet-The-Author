@@ -287,8 +287,15 @@ function mta_profiles_settings_page() {
 ?>
 
 <div class="wrap">
-
+    
 <h2>Meet The Author</h2>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="KMFN9KXQ3DL3G">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
 
 <div style="clear:both;"></div>
 <form  method="post" action="options.php">
@@ -392,49 +399,8 @@ foreach ($mta_profiles_networks2 as $mta_profiles_network) { $count++; ?>
 </tr>
 
 <tr valign="top">
-<th scope="row"><label for="mta_profiles_options[align]">Icons Alignment</label></th>
-<td><select name="mta_profiles_options[align]">
-<option value="left" <?php if ($mta_profiles['align'] == "left"){ echo "selected";}?> >Left</option>
-<option value="right" <?php if ($mta_profiles['align'] == "right"){ echo "selected";}?> >Right</option>
-</select></td>
-</tr>
-
-<tr valign="top">
 <th scope="row"><label for="mta_profiles_options[top]">Icons Distance From Top</label></th>
 <td><input type="text" name="mta_profiles_options[top]" class="small-text" value="<?php echo $mta_profiles['top']; ?>" />&nbsp;px</td>
-</tr>
-
-<tr valign="top">
-<th scope="row"><label for="mta_profiles_options[size]">Icon Size</label></th>
-<td><select name="mta_profiles_options[size]">
-<option value="1" <?php if ($mta_profiles['size'] == "1"){ echo "selected";}?> >16 x 16</option>
-<option value="2" <?php if ($mta_profiles['size'] == "2"){ echo "selected";}?> >24 x 24</option>
-<option value="3" <?php if ($mta_profiles['size'] == "3"){ echo "selected";}?> >32 x 32</option>
-</select></td>
-</tr>
-
-<tr valign="top">
-<th scope="row"><label for="mta_profiles_options[theme]">Icon Theme</label></th>
-<td><select name="mta_profiles_options[theme]">
-<option value="1" <?php if ($mta_profiles['theme'] == "1"){ echo "selected";}?> >Normally Gray - On hover Colored</option>
-<option value="2" <?php if ($mta_profiles['theme'] == "2"){ echo "selected";}?> >Normally Light Colored - On hover Full Colored</option>
-</select></td>
-</tr>
-
-<tr valign="top">
-<th scope="row"><label for="mta_profiles_options[insert]">Insertion of the Profiles</label></th>
-<td><select name="mta_profiles_options[insert]">
-<option value="auto" <?php if ($mta_profiles['insert'] == "auto"){ echo "selected";}?> >Automatic Insertion</option>
-<option value="manual" <?php if ($mta_profiles['insert'] == "manual"){ echo "selected";}?> >Manual Insertion</option>
-</select></td>
-</tr>
-
-<tr valign="top">
-<th scope="row"><label for="mta_profiles_options[media]">Display Media for mta Profiles</label></th>
-<td><select name="mta_profiles_options[media]">
-<option value="screen" <?php if ($mta_profiles['media'] == "screen"){ echo "selected";}?> >On Screen only</option>
-<option value="all" <?php if ($mta_profiles['media'] == "all"){ echo "selected";}?> >On all media, like screen, handheld etc.</option>
-</select></td>
 </tr>
 
 </table>
@@ -448,60 +414,42 @@ foreach ($mta_profiles_networks2 as $mta_profiles_network) { $count++; ?>
 </div>
 
 
-   <div id="side-info-column" class="inner-sidebar">
-			<div class="postbox">
-			  <h3 class="hndle"><span>About this Plugin:</span></h3>
-			  <div class="inside">
-                <ul>
-                <li><a href="#" title="mta Profiles Homepage" >Plugin Homepage</a></li>
-                </ul>
-              </div>
-			</div>
-     </div>
+<div id="side-info-column" class="inner-sidebar">
+    <div class="postbox">
+        <h3 class="hndle"><span>About this Plugin:</span></h3>
+        <div class="inside">
+            <ul>
+                <li><a href="http://codesleepshred.com/wp-meet-the-author-plugin/" title="mta Profiles Homepage" target="_blank" >Plugin Homepage</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-   <div id="side-info-column" class="inner-sidebar">
-			<div class="postbox">
-			  <h3 class="hndle"><span>Credits:</span></h3>
-			  <div class="inside">
-                <ul>
-                <li><a href="http://codex.wordpress.org/Main_Page" title="Wordpress Help" >Wordpress Codex</a></li>
-                </ul>
-              </div>
-			</div>
-     </div>
+    <div id="side-info-column" class="inner-sidebar">
+                    <div class="postbox">
+                    <h3 class="hndle"><span>Credits:</span></h3>
+                        <div class="inside">
+                            <ul>
+                                <li><a href="http://codesleepshred.com" target="_blank">CodeSleepShred</a></li>
+                                <li><a href="http://codex.wordpress.org/Main_Page" title="WordPress Help" target="_blank">WordPress Codex</a></li>
+                                <li><a href="http://wordpress.org/extend/plugins/cute-profiles/" title="Cute Profiles" target="_blank">Cute Profiles</a></li>
+                            </ul>
+                        </div>
+                    </div>
+    </div>
 
-       <div id="side-info-column" class="inner-sidebar">
-			<div class="postbox">
-			  <h3 class="hndle"><span>Support &amp; Donations</span></h3>
-			  <div class="inside">
-					<script language="JavaScript" type="text/javascript">
-                    <!--
-                        // Customize the widget by editing the fields below
-                        // All fields are required
+    <div id="side-info-column" class="inner-sidebar">
+                    <div class="postbox">
+                      <h3 class="hndle"><span>Support &amp; Donations</span></h3>
+                          <div class="inside">
+                          <ul>
+                              <li><a href="https://github.com/chaos1/WP-Meet-The-Author/issues" target="_blank" >Report Issues</a></li>
+                              <li><a href="http://codesleepshred.com/donate/" target="_blank" alt="Give this guy a beer!">Donate Today</a></li>
+                          </ul>
 
-                        // Your Feedity RSS feed URL
-                        feedity_widget_feed = "http://feedity.com/rss.aspx/clickonf5-org/UlVSUldS";
-
-                        // Number of items to display in the widget
-                        feedity_widget_numberofitems = "5";
-
-                        // Show feed item published date (values: yes or no)
-                        feedity_widget_showdate = "no";
-
-                        // Widget box width (in px, pt, em, or %)
-                        feedity_widget_width = "220px";
-
-                        // Widget background color in hex or by name (eg: #ffffff or white)
-                        feedity_widget_backcolor = "#ffffff";
-
-                        // Widget font/link color in hex or by name (eg: #000000 or black)
-                        feedity_widget_fontcolor = "#000000";
-                    //-->
-                    </script>
-                    <script language="JavaScript" type="text/javascript" src="http://feedity.com/js/widget.js"></script>
-              </div>
-			</div>
-     </div>
+                        </div>
+                    </div>
+    </div>
 
 </div> <!--end of poststuff -->
 
